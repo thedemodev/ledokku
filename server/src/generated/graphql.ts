@@ -56,6 +56,11 @@ export type CreateAppResult = {
   appBuild: AppBuild;
 };
 
+export type DeleteAppResult = {
+   __typename?: 'DeleteAppResult';
+  result: Scalars['String'];
+};
+
 export type DokkuPlugin = {
    __typename?: 'DokkuPlugin';
   name: Scalars['String'];
@@ -83,6 +88,10 @@ export type CreateDatabaseInput = {
   type: DatabaseTypes;
 };
 
+export type DeleteAppInput = {
+  name: Scalars['String'];
+};
+
 export type Query = {
    __typename?: 'Query';
   apps: Array<App>;
@@ -107,6 +116,7 @@ export type Mutation = {
   loginWithGithub?: Maybe<LoginResult>;
   createApp: CreateAppResult;
   createDatabase: Database;
+  deleteApp: DeleteAppResult;
 };
 
 
@@ -122,6 +132,11 @@ export type MutationCreateAppArgs = {
 
 export type MutationCreateDatabaseArgs = {
   input: CreateDatabaseInput;
+};
+
+
+export type MutationDeleteAppArgs = {
+  input: DeleteAppInput;
 };
 
 export type CacheControlScope = 
@@ -212,11 +227,13 @@ export type ResolversTypes = {
   DatabaseTypes: DatabaseTypes,
   LoginResult: ResolverTypeWrapper<LoginResult>,
   CreateAppResult: ResolverTypeWrapper<CreateAppResult>,
+  DeleteAppResult: ResolverTypeWrapper<DeleteAppResult>,
   DokkuPlugin: ResolverTypeWrapper<DokkuPlugin>,
   DokkuPluginResult: ResolverTypeWrapper<DokkuPluginResult>,
   AppLogsResult: ResolverTypeWrapper<AppLogsResult>,
   CreateAppInput: CreateAppInput,
   CreateDatabaseInput: CreateDatabaseInput,
+  DeleteAppInput: DeleteAppInput,
   Query: ResolverTypeWrapper<{}>,
   Mutation: ResolverTypeWrapper<{}>,
   CacheControlScope: CacheControlScope,
@@ -235,11 +252,13 @@ export type ResolversParentTypes = {
   DatabaseTypes: DatabaseTypes,
   LoginResult: LoginResult,
   CreateAppResult: CreateAppResult,
+  DeleteAppResult: DeleteAppResult,
   DokkuPlugin: DokkuPlugin,
   DokkuPluginResult: DokkuPluginResult,
   AppLogsResult: AppLogsResult,
   CreateAppInput: CreateAppInput,
   CreateDatabaseInput: CreateDatabaseInput,
+  DeleteAppInput: DeleteAppInput,
   Query: {},
   Mutation: {},
   CacheControlScope: CacheControlScope,
@@ -276,6 +295,11 @@ export type CreateAppResultResolvers<ContextType = any, ParentType extends Resol
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 };
 
+export type DeleteAppResultResolvers<ContextType = any, ParentType extends ResolversParentTypes['DeleteAppResult'] = ResolversParentTypes['DeleteAppResult']> = {
+  result?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+};
+
 export type DokkuPluginResolvers<ContextType = any, ParentType extends ResolversParentTypes['DokkuPlugin'] = ResolversParentTypes['DokkuPlugin']> = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   version?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
@@ -305,6 +329,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   loginWithGithub?: Resolver<Maybe<ResolversTypes['LoginResult']>, ParentType, ContextType, RequireFields<MutationLoginWithGithubArgs, 'code'>>,
   createApp?: Resolver<ResolversTypes['CreateAppResult'], ParentType, ContextType, RequireFields<MutationCreateAppArgs, 'input'>>,
   createDatabase?: Resolver<ResolversTypes['Database'], ParentType, ContextType, RequireFields<MutationCreateDatabaseArgs, 'input'>>,
+  deleteApp?: Resolver<ResolversTypes['DeleteAppResult'], ParentType, ContextType, RequireFields<MutationDeleteAppArgs, 'input'>>,
 };
 
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
@@ -317,6 +342,7 @@ export type Resolvers<ContextType = any> = {
   Database?: DatabaseResolvers<ContextType>,
   LoginResult?: LoginResultResolvers<ContextType>,
   CreateAppResult?: CreateAppResultResolvers<ContextType>,
+  DeleteAppResult?: DeleteAppResultResolvers<ContextType>,
   DokkuPlugin?: DokkuPluginResolvers<ContextType>,
   DokkuPluginResult?: DokkuPluginResultResolvers<ContextType>,
   AppLogsResult?: AppLogsResultResolvers<ContextType>,
