@@ -1,5 +1,5 @@
 module.exports = {
   someSidebar: {
-    Documentation: ['introduction', 'getting-started', 'existing-dokku-users'],
+    Documentation: ['introduction', 'what-is-ledokku', 'getting-started'],
   },
 };
