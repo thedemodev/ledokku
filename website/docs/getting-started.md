@@ -3,7 +3,7 @@ id: getting-started
 title: First time user guide
 ---
 
-### Tools install
+### Tools to install
 
 - [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
